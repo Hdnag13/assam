@@ -1,0 +1,674 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Assam</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .map {
+          align-self: ;
+            width: 60%;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .text {
+            width: 35%;
+            margin: 10px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+    </style>
+    <style>
+  .image-overlay img {
+  max-width: 100%; /* make the image as wide as the container */
+  max-height: 100%; /* make the image as tall as the container */
+  object-fit: cover;
+}
+  }
+  .image-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:transparent; /* adjust the overlay background color and opacity */
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .overlay h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .overlay p {
+    font-size: 16px;
+  }
+</style>
+<style>
+    .festival-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.festival-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.festival-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.festival-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.festival-item h2 {
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.festival-item p {
+  font-size: 16px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .festival-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .festival-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.national-parks-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.national-parks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.national-park-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.national-park-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.national-park-item h2 {
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.national-park-item p {
+  font-size: 16px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .national-parks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .national-parks-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.national-things-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.national-things-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.national-thing-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.national-thing-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.national-thing-item h2 {
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.national-thing-item p {
+  font-size: 16px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+ .national-things-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+ .national-things-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+</style>
+     <style>
+    /* Add some basic styling to make it look nice */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      overflow: hidden;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 20px;
+    }
+    .card {
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  </style>
+  <style>
+.Assam-info-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+  flex-basis: 40%;
+  margin: 20px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.text-container {
+  flex-basis: 50%;
+  margin: 20px;
+}
+
+.text-container h2 {
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.text-container p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .Assam-info-container {
+    flex-direction: column;
+  }
+  .image-container {
+    flex-basis: 100%;
+  }
+  .text-container {
+    flex-basis: 100%;
+  }
+}
+.famous-people-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.famous-people-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.famous-person-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.famous-person-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.famous-person-item h2 {
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.famous-person-item p {
+  font-size: 16px;
+  color: #666;
+}
+
+@media
+    </style>
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+<style>
+    h1 {
+  font-family: 'Rubik Wet Paint', cursive;
+  font-size: 36px;
+  color: #333;
+}
+</style>
+</head>
+<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script></body>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Assam</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Explore
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+</body>
+<body>
+<div class="image-overlay">
+  <img src="https://www.andbeyond.com/wp-content/uploads/sites/5/assam-tea-plantations.jpg" alt="Image">
+  <div class="overlay">
+    <p style="font-family: Rubik Wet Paint; font-size: 200px;">Assam</p>
+  </div>
+</div>
+</body>
+<body>
+<div class="Assam-info-container">
+  <div class="image-container">
+    <img src="https://adventurerivercruises.com/wp-content/uploads/2019/11/Experience-Haroocharai-Tea-State-Assam12.jpg" alt="Assam Image">
+  </div>
+  <div class="text-container">
+    <h2>About Assam</h2>
+    <p>Assam, state of India. It is located in the northeastern part of the country and is bounded to the north by the kingdom of Bhutan and the state of Arunachal Pradesh, to the east by the states of Nagaland and Manipur, to the south by the states of Mizoram and Tripura, and to the west by Bangladesh and the states of Meghalaya and West Bengal. The name Assam is said to be derived from the word asama, meaning “peerless” in the now extinct Ahom language.</p>
+    <p>Average temperatures in Assam range from highs in the upper 90s F (about 36 °C) in August to lows in the mid-40s F (about 7 °C) in January. The cool season generally lasts from October to February and is marked by fogs and brief showers. The state escapes the normal Indian hot, dry season. Although some rain occurs from March through May, the heaviest precipitation comes with the southwest monsoon, which arrives in June, stays through September, and often causes widespread and destructive flooding. </p>
+    <p>Assam has numerous wildlife sanctuaries, the most prominent of which are two UNESCO World Heritage sites—Kaziranga National Park (designated in 1985), on the bank of the Brahmaputra River, and Manas Wildlife Sanctuary (designated in 1992), near the border with Bhutan. Both are refuges for the fast-disappearing Indian one-horned rhinoceros, and the sanctuary at Manas is known especially for its tigers and leopards.</p>
+  </div>
+</div>
+</body>
+<body>
+  <div class="container">
+    <div class="text">
+      <h2>Why Should You Visit Assam?</h2>
+      <p>One of the main reasons tourists, are drawn to Assam is its breathtaking natural landscapes, from the lush tea gardens of Jorhat, to the serene Brahmaputra River meandering through the valley. Tourists are often mesmerized by the vibrant Bihu dance, and performed during the harvest festival of Bohag Bihu, the melodious tunes of the Borgeet (devotional songs), and the intricate craftsmanship of Assamese hand looms, and handicrafts.</p>
+      
+    </div>
+    <div class="image">
+      <img src="https://ihplb.b-cdn.net/wp-content/uploads/2021/10/Rang-Ghar-700x430.jpg">
+    </div>
+    <div class="image">
+      <img src="https://ihplb.b-cdn.net/wp-content/uploads/2021/10/khaspur.jpg" >
+    </div>
+</body>
+<body>
+    <div class="festival-container">
+  <h1>Festivals of Assam</h1>
+  <div class="festival-grid">
+    <div class="festival-item">
+      <img src="https://m.economictimes.com/thumb/msid-99483942,width-1200,height-900,resizemode-4,imgsize-165930/bihu-2.jpg" alt="Bihu">
+      <h2>Bihu
+      <p> Bihu is of three types and it is an important cultural festival unique to the Indian state of Assam  'Rongali' or 'Bohag Bihu' observed in April, 'Kongali' or 'Kati Bihu' observed in October or November, and 'Bhogali' or 'Magh Bihu' observed in January. The term Bihu is also used to imply Bihu dance otherwise called Bihu Naas and Bihu folk songs also called Bihu Geet.</p>
+    </div>
+    <div class="festival-item">
+      <img src="https://utsav.gov.in/public/uploads/event_cover_image/event_234/1653893806653372107.jpeg" alt="Ali-Ai-Ligang">
+      <h2>Ali-Ai-Ligang</h2>
+      <p>Ali-Aye-Ligang or Ali-Ai-Ligang a spring festivity associated with agriculture celebrated by the Mising or Mishing tribal people of Assam and other Northeast indian states on the occasion of the beginning of the Ahu paddy cultivation. The festival marks onset of sowing seeds. The name of the festival is made up of three terms, "Ali", legumes, "Aye" .</p>
+    </div>
+    <div class="festival-item">
+      <img src="https://vajiram-prod.s3.ap-south-1.amazonaws.com/Ambubachi_Mela_811a2601ca.webp" alt="Ambubachi Mela">
+      <h2>Ambubachi Mela</h2>
+      <p>The Ambubachi Mela is an annual Hindu mela held at Kamakhya Temple in Guwahati, Assam. This yearly mela is celebrated during the monsoon season that happens to fall during the Assamese month Ahaar, around the middle of June when the sun transits to the zodiac of Mithuna, when the Brahmaputra River is in spate.</p>
+    </div>
+    <div class="festival-item">
+      <img src="https://images.moneycontrol.com/static-mcnews/2019/10/Durga-Puja-2-1-770x433.jpg?impolicy=website&width=770&height=431" alt="Durga Puja">
+      <h2>Durga Puja</h2>
+      <p>Durga Puja, also known as Durgotsava or Sharodotsav, is an annual festival celebrated in the Assamn  which reveres and pays homage to the Hindu goddess Durga, and is also celebrated because of Durga's victory over Mahishasura.</p>
+    </div>
+    <div class="festival-item">
+      <img src="https://tms.tourgenie.com/assets/images/imgblog/blogimg_24_c9b011085a2718421c9697ed84daf555.jpg" alt="Brahmaputra beach Festival">
+      <h2>Brahmaputra Beach Festival</h2>
+      <p>Brahmaputra Beach Carnival is an open-air festival held in Guwahati on the ravine beaches of the mighty Brahmaputra River. It is held every year in the month of January that coincides with the Magh Bihu, the harvest festival in Assam. It is said to be inspired from various festivals held in the southern states of India.  </p>
+    </div>
+    <div class="festival-item">
+      <img src="https://www.fabhotels.com/blog/wp-content/uploads/2020/01/Rath-Yatra-celebration.jpg" alt="Rath Yatra">
+      <h2>Rath Yatra</h2>
+      <p>The International Society for Krishna Consciousness (ISKCON) Guwahati always organise a nine-day-long Guwahati Jagannath Rathayatra. Rathayatra is important and unique as the purpose of this festival is to unite the people of different communities in the Northeast for peace and happiness through socio-cultural and devotional activities, according to a statement. </p>
+    </div>
+  </div>
+</div>
+</body>
+<body>
+<!-- HTML -->
+<div class="national-parks-container">
+  <h1>National Parks of Assam</h1>
+  <div class="national-parks-grid">
+    <div class="national-park-item">
+      <img src="https://static.wanderon.in/wp-content/uploads/2024/05/kaziranga-national-park-closing-date-min.jpg" alt="Kaziranga National Park (Assam)">
+      <h2>Kaziranga National Park</h2>
+      <p>Kaziranga National Park famous for its one-horned Rhinoceros is located in Golaghat, Nagaon and Sonitpur districts of Assam. Kaziranga was designated a UNESCO World Heritage site in 1985. The park has an area of some 430 square km and lies between the Brahmaputra River and the Karbi (Mikir) Hills.</p>
+    </div>
+    <div class="national-park-item">
+      <img src="https://www.wildlifedestination.com/images/manas-wild-buffalo.jpg" alt="Manas National Park">
+      <h2>Manas National Park</h2>
+      <p>Manas National Park is a national park, Project Tiger reserve, and an elephant reserve in Assam, India. Located in the Himalayan foothills, it borders the Royal Manas National Park in Bhutan. The park is known for its rare and endangered endemic wildlife such as the Assam roofed turtle, hispid hare, golden langur and pygmy hog. Manas is also famous for its population of the wild water buffalo.</p>
+    </div>
+    <div class="national-park-item">
+      <img src="https://www.insideindianjungles.com/wp-content/uploads/2019/07/nameri-1.jpg " alt="Nameri National Park">
+      <h2>Nameri National Park</h2>
+      <p>Nameri National Park is a national park in the foothills of the eastern Himalayas in the Sonitpur District of Assam, India, about 35 km from Tezpur. Nameri is about 9 km from Chariduar, the nearest village. Nameri shares its northern boundary with the Pakhui Wildlife Sanctuary of Arunachal Pradesh/p>
+    </div>
+    <div class="national-park-item">
+      <img src="https://blackbirdtours.in/wp-content/uploads/2020/12/Darjeeling-Woodpecker-1140x530.jpg" alt="Dibru-Saikhowa National Park">
+      <h2></h2>
+      <p>Dibru-Saikhowa National Park is called the bird watcher's paradise, since it has more than 300 species of native and exotic birds. It is also home to a large number of endangered species, including a diverse range of fish.</p>
+      <p>Dibru-Saikhowa National Park is a national park located in Dibrugarh and Tinsukia districts, Assam, India. It was designated a Biosphere Reserve in July 1997 with an area of 765 km², including a core area of 340 km² and a buffer zone of 425 km².</p>
+    </div>
+    <div class="national-park-item">
+      <img src="https://www.papikondalu-tour-package.com/orang/assets/images/orang-national-park-3-600x450-41.jpg" alt="Orang National Park">
+      <h2>Orang National Park</h2>
+      <p> Orang National Park is a national park in India located on the northern bank of the Brahmaputra River in the Darrang and Sonitpur districts of Assam. It covers an area of 79.28 km². It was established as a sanctuary in 1985 and declared a national park on 13 April 1999.</p>
+    </div>
+    <div class="national-park-item">
+      <img src="https://img.jagranjosh.com/images/2021/June/762021/raimona_sixth_national_park_of_assam.jpg" alt="Raimona National Park">
+      <h2>Raimona National Park</h2>
+      <p>Raimona National Park is famous for golden langur, an endemic species (with Bhutan) which has been named as the mascot of Bodoland region. It also has Asian elephant, Bengal tiger, clouded leopard, gaur, chital, four to five species of hornbills, more than 150 species of butterflies, 190 species of birds,380 varieties of plants and orchids.It is already on the global map for being an important bird and biodiversity area .</p>
+    </div>
+  </div>
+</div>
+</body>
+<body>
+<div class="national-things-container">
+  <h1>Popular Food in Assam</h1>
+  <div class="national-things-grid">
+    <div class="national-thing-item">
+      <img src="https://1.bp.blogspot.com/-UqBN0rEb-n0/X_SL3DdqHAI/AAAAAAAAN7w/DeocL6wnWFIr5CDjCDt0ITUIoRF2vqdGwCLcBGAsYHQ/s16000/Patishapta%2Bpitha%2Brecipe.JPG" alt="Pithas">
+      <h2>Pithas</h2>
+      <p>Pithas are a variety of food similar to pancakes, dumplings or fritters, originating from the Indian subcontinent, common in Bangladesh and India. Pitha can be sweet or savoury, and usually made from a dough or batter, which is then steamed, fried or griddled.</p>
+    </div>
+    <div class="national-thing-item">
+      <img src=" https://www.k33kitchen.com/wp-content/uploads/2019/05/k33kitchen_braised-bamboo-shoot-soy-sauce-menma-1-750x1000.jpg" alt="Bamboo shot">
+      <h2>Bamboo Shot</h2>
+      <p> Bamboo shoots or bamboo sprouts are the edible shoots of many bamboo species including Bambusa vulgaris and Phyllostachys edulis. They are used as vegetables in numerous Asian dishes and broths. They are sold in various processed shapes and are available in fresh, dried, and canned versions.</p>
+    </div>
+    <div class="national-thing-item">
+      <img src="https://i0.wp.com/beextravegant.com/wp-content/uploads/2022/07/IMG_9072.jpg?fit=1150%2C2048&ssl=1&resize=1280%2C720" alt="Til Pitha">
+      <h2>Til Pitha</h2>
+      <p>Til Pitha which is an Assamese dish with a extravegant twist. This dish can be enjoyed for breakfast or as a snack. Til Pitha or Tilor Pitha is traditionally prepared during special occasions and major festivals, like Bihu. </p>
+    </div>
+    <div class="national-thing-item">
+      <img src="https://b.zmtcdn.com/data/pictures/chains/5/19992325/0fd7d6a4303806d5c5c0298ca01fe4c6.jpg" alt="laru">
+      <h2>Laru</h2>
+      <p>Narikol Laru is a traditional Assamese sweet dish made from grated coconut and jaggery. It's a delightful treat that is often prepared during Bihu, the harvest festival of Assam.</p>
+    </div>
+    <div class="national-thing-item">
+      <img src="https://www.feamag.com/wp-content/uploads/2020/04/FB_IMG_1586153518218.jpg" alt="Khar">
+      <h2>Khar</h2>
+      <p>Khar (alkali) is a traditional food adjuvant of all Assamese people and all the inhabitants of Assam. Natural Khar is prepared by filtering water through the ashes of pseudostem, corm and fruit skin of banana named Bhimkol in Assamese.</p>
+    </div>
+  </div>
+</div>
+            </body>
+<body>
+<div class="famous-people-container">
+  <h1>Famous Identities of Assam</h1>
+  <div class="famous-people-grid">
+    <div class="famous-person-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Bishnu_rabha.png" alt="Bishnu Prasad Rabha">
+      <h2>Bishnu Prasad Rabha</h2>
+      <p>Bishnu Prasad Rabha was an Indian cultural figure from Assam, known for his contributions in the fields of music, dance, painting, literature as well as political activism.</p>
+    </div>
+    <div class="famous-person-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Dr._Bhupen_Hazarika%2C_Assam%2C_India.jpg" alt="Bhupen Hazarika">
+      <h2>Bhupen Hazarika </h2>
+      <p>Bhupen Hazarika (1926-2011), also known as the Bard of the Brahmaputra--after the river that runs through Assam--was a legendary singer, lyricist, music composer, scholar, artist and above all, a humanist who dared to dream of a classless society. </p>
+    </div>
+    <div class="famous-person-item">
+      <img src="https://sawanonlinebookstore.com/wp-content/uploads/2022/05/gopinath-bordoloi.jpg" alt=" Gopinath Bordoloi">
+      <h2>Gopinath Bordoloi</h2>
+      <p> Gopinath Bordoloi was a politician and Indian independence activist and politician who served as the 1st Chief Minister of Assam from 1946 to 1950. He was also the chairman of North-East Frontier Tribal areas and Assam.</p>
+    </div>
+    <div class="famous-person-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUw5R227A28ShEOEh7DvvBGrkM3SqbHoirpw&s" alt="Lakshminath Bezboroa">
+      <h2>Lakshminath Bezboroa</h2>
+      <p>Lakshminath Bezbarua was an Assamese poet, novelist and playwright of modern Assamese literature. He was one of the literary stalwarts of the Jonaki Era, the age of romanticism in Assamese literature.</p>
+    </div>
+    <div class="famous-person-item">
+      <img src="https://im.rediff.com/sports/2018/apr/10hima.jpg?w=670&h=900" alt="Hima Das">
+      <h2>Hima Das</h2>
+      <p>Hima Das, nicknamed Dhing Express, is an Indian sprinter from the state of Assam. She holds the current Indian national record in 400 meters with a timing of 50.79 s that she clocked at the 2018 Asian Games in Jakarta, Indonesia.</p>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+</body>
+<body>
+    <style>.card-container {
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.card-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.card {
+  margin: 20px;
+  width: 250px;
+  height: 300px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card:hover {
+  transform: translateZ(20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-content {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+.card-content h2 {
+  margin-top: 0;
+}
+
+.card-content p {
+  font-size: 16px;
+  color: #666;
+}
+
+</style>
+    <div class="card-container">
+  <div class="card-scroll">
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="https://media1.thrillophilia.com/filestore/mjuhzhutux951hvjz99lcjm0anaj_1602136493_shutterstock_1036796947.jpg.jpg" alt="Tezpur">
+      <div class="card-content">
+        <h2>Tezpur</h2>
+        <p> The area is famous for its Tea plantations, and the undulating stretch of tea gardens .</p>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="https://www.holidify.com/images/bgImages/BARPETA.jpg" alt="Barpeta">
+      <div class="card-content">
+        <h2>Barpeta</h2>
+        <p>Barpeta is notable as a temple town or the Satra Nagari. </p>
+      </div>
+    </div> 
+    <div class="card">
+      <img src="https://lh5.googleusercontent.com/p/AF1QipOtYe6dSPalYLSzpv8AZ4nC1QbXnn3oYuM3LCeW=w675-h390-n-k-no" alt="Tinsukia">
+      <div class="card-content">
+        <h2>Tinsukia</h2>
+        <p>Tinsukia is an industrial district of Assam.</p>
+      </div>
+      </div>
+    
+    <div class="card">
+      <img src="https://lh5.googleusercontent.com/p/AF1QipN1jZXx45SMlrMGXZuEad_AK3asXe8XxJ1dBpXF=w675-h390-n-k-no" alt="Jorhat">
+      <div class="card-content">
+        <h2>Jorhat</h2>
+        <p>Jorhat is well known for its extensive tea gardens, and is the nerve centre of the tea industry.</p>
+      </div>
+    </div><div class="card">
+      <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcSFxP04HQgbHMOzKwG8vJaYMU5rA0oPxxWuALPmCJNrKSEErhnJegGCxXyorPdtUYDWn3N3ioaelD71WrViK_DlIGxnh8qmFSlDr4gNIQ" alt="">
+      <div class="card-content">
+        <h2>Cachar</h2>
+        <p>The southern part was also recommended as 'Dhaleswari' wildlife sanctuary.</p>
+      </div
+    </div>
+  </div>
+</body>
+</html>
